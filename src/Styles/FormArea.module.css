@@ -1,0 +1,34 @@
+.formArea,
+.symptoms {
+  margin-top: 50px;
+  /* border: 1px solid black; */
+  display: grid;
+  place-items: center;
+}
+.symptoms a,
+.media {
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4vw;
+  font-weight: bold;
+  color: var(--dark-bg-color);
+  transition: all 0.2s;
+  border: 2px solid var(--dark-bg-color);
+}
+.media {
+  font-size: 1.3vw;
+  border: none;
+}
+
+.symptoms a:hover {
+  background-color: rgb(219, 241, 255);
+  transition: all 0.2s;
+}
+
+.symptoms {
+  border-radius: 15px;
+  padding: 30px;
+}

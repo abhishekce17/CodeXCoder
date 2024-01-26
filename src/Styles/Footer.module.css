@@ -1,0 +1,31 @@
+.footer_container {
+  align-self: flex-end;
+  padding: 10px 0;
+  color: #fff;
+  background-color: var(--dark-bg-color);
+  width: inherit;
+  height: max-content;
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+  place-items: center;
+  font-size: 0.9vw;
+}
+
+.footer_container > div:first-child {
+  padding: 0 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.footer_container > div:first-child ul li {
+  line-height: 1.5;
+  list-style: none;
+  font-weight: 300;
+}
+
+.footer_container > div:last-child {
+  padding-top: 10px;
+}

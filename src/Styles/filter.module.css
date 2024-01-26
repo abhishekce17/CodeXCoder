@@ -1,0 +1,44 @@
+.filter_container{
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #eff;
+    font-size: 1.1vw;
+    /* border: 1px solid black; */
+    width: inherit;
+    height: max-content;
+    line-height: 1.4;
+    color: var(--dark-bg-color);
+}
+
+.filter_container > div + div{
+    border-top: 1px solid var(--dark-bg-color);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.category p:first-child, .brand p:first-child, .range p:first-child, .rating p:first-child, .sort_container p:first-child{
+    font-weight: 600;
+}
+.range > div{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.range > div > input{
+    padding: 2px 3px;
+    width: 100%;
+}
+
+.sort_container select{
+    background-color: #fff;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px;
+    width: auto;
+    color: var(--dark-bg-color);
+    font-weight: 500;
+    font-size: 1vw;
+    border: 1px solid var(--dark-bg-color);
+    border-radius: 15px;
+}

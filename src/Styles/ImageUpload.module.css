@@ -1,0 +1,50 @@
+.image_drop_area {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid var(--dark-bg-color);
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+.imgUpload label,
+.image_drop_area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image_preview {
+  padding: 10px;
+  margin-top: 5px;
+  display: grid;
+  border-radius: 15px;
+  border: 1px solid rgb(200, 234, 255);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.image_preview > div > img {
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+.image_preview > div {
+  position: relative;
+}
+
+.remove_image {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  padding: 3px;
+  border: 1px solid rgb(219, 241, 255);
+  color: red;
+  font-size: 15px;
+}
+
+.submit {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  padding: 11px 20px;
+  color: #fff;
+  background-color: var(--dark-bg-color);
+  border: none;
+  border-radius: 10px;
+}
