@@ -93,3 +93,30 @@
   padding-bottom: 7px;
   color: var(--dark-bg-color);
 }
+.seach_icon {
+  font-size: 25px;
+}
+.search_bar {
+  left: 10%;
+  padding: 5px;
+  width: 80%;
+  border: 1px solid var(--dark-bg-color);
+  position: relative;
+}
+.seach_icon {
+  position: absolute;
+  right: 6px;
+  top: 15px;
+  color: var(--dark-bg-color);
+}
+.search_bar input {
+  width: 100%;
+  background-color: var(--primary-light-color);
+  padding: 0 20px;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  border-radius: 25px;
+  height: 33px;
+  transition: width 0.3s;
+}

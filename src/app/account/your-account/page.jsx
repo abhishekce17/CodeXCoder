@@ -4,7 +4,7 @@ import styles from "@/Styles/Account.module.css"
 import UserAuthContext from '@/app/contextProvider';
 import Link from 'next/link';
 import _ from "lodash"
-import { useState, useContext } from 'react';
+import {useState, useContext} from 'react';
 
 const Page = () => {
     const context = useContext(UserAuthContext)
@@ -22,7 +22,7 @@ const Page = () => {
                 <p><strong>Address:</strong> {!_.isEmpty(userData.address) ? `${userData.address.house_no}, ${userData.address.area}, ${userData.address.landmark}, ${userData.address.city}, ${userData.address.pincode}, ${userData.address.state}` : ""}</p>
             </div>
         </div>
-        <h3>Recent Order</h3>
+        {/* <h3>Recent Order</h3>
         <div className={styles.user_account} >
             <div className={styles.recent_order}>
                 {recentOrders.length ? <table>
@@ -50,7 +50,7 @@ const Page = () => {
                     </center>
                 }
             </div>
-        </div>
+        </div> */}
 
     </>
     );

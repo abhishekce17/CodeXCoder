@@ -90,7 +90,7 @@ const Page = () => {
                         <input
                             type="text"
                             id="name"
-                            name="name"
+                            name="fullName"
                             value={formData.fullName}
                             onChange={handleInputChange}
                             disabled={!isEditing}
@@ -168,7 +168,7 @@ const Page = () => {
                     ) : (
                         <button className={styles.action} onClick={handleEditClick}>Edit</button>
                     )}
-                    <button className={styles.action} onClick={handleChnagePassword}>Change Password</button>
+                    {/* <button className={styles.action} onClick={handleChnagePassword}>Change Password</button> */}
                 </div>
             </div>
         </>

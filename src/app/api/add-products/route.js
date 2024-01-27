@@ -46,7 +46,8 @@ export async function POST(req) {
             productName: body.productName,
             productFirtsImgURL: body.imgURLs[0],
             price: body.price || "",
-            allTags: body.allTags
+            allTags: body.allTags,
+            specifications: body.specifications
         }
         const productSnapDetailsRef = collection(db, "ProductSnapDetails")
         const data = await addDoc(productSnapDetailsRef, snapShot)

@@ -25,7 +25,17 @@ const Page = () => {
             <p> {data.productName} </p>
           </Link>
         </div>
-        <div>{type?.variant || "---"}</div>
+        <div className={styles.useCases} >
+          <ul>
+            {
+              data.allTags.map((tag, index) => {
+                return (
+                  <li key={index}>{tag + " ,"}</li>
+                )
+              })
+            }
+          </ul>
+        </div>
         <div>{data.price}</div>
       </div>
     )

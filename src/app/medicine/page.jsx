@@ -2,7 +2,8 @@
 import styles from "@/Styles/productsLayout.module.css"
 import Link from "next/link"
 import Image from "next/image"
-import {AiFillHeart, AiOutlineHeart} from "react-icons/ai"
+import {CgShoppingCart, CgSearch} from "react-icons/cg"
+import {useRouter} from "next/navigation";
 import FilterComponent from "@/Components/FilterComponent"
 import {useContext, useEffect, useMemo, useState} from "react"
 import Loading from "@/app/loading"
@@ -11,12 +12,18 @@ import UserAuthContext from "@/app/contextProvider"
 
 
 const Page = ({params}) => {
+    let router = useRouter()
+    const context = useContext(UserAuthContext)
     const ctgry = decodeURIComponent(params.ctgry)
     const [medicineProducts, setMedicineProducts] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const [allFilterTags, setAllFilterTags] = useState([]);
     const [filterByTags, setFilterByTags] = useState([]);
+    const [queryValue, setQueryValue] = useState("");
 
+    const handleChange = (e) => {
+        setQueryValue(e.target.value)
+    }
 
     const fetchFeaturedProducts = useMemo(async () => {
         const response = await fetch("/api/all-products");
@@ -39,6 +46,11 @@ const Page = ({params}) => {
         }
     }, [ctgry, filterByTags]);
 
+    const handleQueryRequest = (e) => {
+        e.preventDefault()
+        router.push("/search/" + queryValue.replace(" ", "-"))
+    }
+
     useEffect(() => {
         async function fetchtags() {
             const response = await fetch("/api/FetchTag")
@@ -50,6 +62,12 @@ const Page = ({params}) => {
 
     return (
         <div className={styles.layout} >
+            <div className={styles.search_bar} id="search-bar" >
+                <form onSubmit={handleQueryRequest} >
+                    <input type="text" placeholder="Search Product" value={queryValue} onChange={handleChange} spellCheck="false" />
+                    <CgSearch className={styles.seach_icon} />
+                </form>
+            </div>
             {
                 isLoading ? Loading() :
                     <div className={styles.layout_container} data-listing="true" >

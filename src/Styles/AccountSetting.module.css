@@ -1,0 +1,48 @@
+.account_settings_page {
+  padding: 10px;
+}
+
+.form,
+.form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form div + div {
+  padding-top: 10px;
+  border-top: 1px solid var(--light-bg-color);
+}
+
+.form {
+  margin-bottom: 15px;
+}
+
+.form input:disabled {
+  outline: none;
+  border: 1px solid #fff;
+}
+
+.form input {
+  border: 1px solid var(--light-bg-color);
+  border-radius: 3px;
+  background: #fff;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.action {
+  cursor: pointer;
+  font-size: 1rem;
+  max-width: max-content;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 25px;
+  border: none;
+  background-color: var(--dark-bg-color);
+}
+
+.action:active {
+  background-color: var(--light-bg-color);
+}

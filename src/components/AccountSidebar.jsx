@@ -1,17 +1,17 @@
 "use client"
 import style from "@/Styles/Account.module.css"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useEffect } from "react"
+import {usePathname} from "next/navigation"
+import {useEffect} from "react"
 
 const AccountSidebar = () => {
   let pathname = usePathname()
   let choosenRoute = pathname.split("/")[2]
-  let features = ["Your Account", "Order History", "Wishlist", "Payment Methods", "Account Setting", "Help and Support", "Privacy and Policy"]
+  let features = ["Your Account", "Appointment History", "Account Setting", "Privacy and Policy"]
 
 
   const signOut = async () => {
-    const signOutResponse = await fetch("/api/Authentication/userAuth/SignOut", { method: "DELETE" })
+    const signOutResponse = await fetch("/api/Authentication/userAuth/SignOut", {method: "DELETE"})
     const result = await signOutResponse.json()
     if (result.status === 200) {
       window.location.href = "/";
@@ -51,7 +51,7 @@ const AccountSidebar = () => {
         })
       }
       <li>
-        <button onClick={signOut} style={{ width: "100%", padding: "7px 0", fontWeight: "500", fontSize: "14px", color: "var(--dark-bg-color)", borderRadius: "5px", border: "1px solid var(--dark-bg-color)" }} className={style.signOut} >Sign Out</button>
+        <button onClick={signOut} style={{width: "100%", padding: "7px 0", fontWeight: "500", fontSize: "14px", color: "var(--dark-bg-color)", borderRadius: "5px", border: "1px solid var(--dark-bg-color)"}} className={style.signOut} >Sign Out</button>
       </li>
     </ul>
 

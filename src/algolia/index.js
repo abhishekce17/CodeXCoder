@@ -51,7 +51,7 @@ const algoliasearch = require("algoliasearch");
 
 
 const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
-const index = client.initIndex("Products");
+const index = client.initIndex("Medicine");
 
 export const addToIndex = (data, objectID) => {
     return index.saveObject({...data, objectID});
