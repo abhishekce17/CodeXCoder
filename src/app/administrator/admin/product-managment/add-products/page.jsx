@@ -8,7 +8,7 @@ import uploadImages from '../uploadImages';
 
 const Page = () => {
   const router = useRouter()
-  const [categories, setCategories] = useState(null)
+  const [tags, setTag] = useState([])
 
   async function handleAddProduct(formDataAPI) {
     try {
@@ -41,19 +41,20 @@ const Page = () => {
   };
 
   useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("/api/AdminCategories/FetchCategories")
+    async function fetchTag() {
+      const response = await fetch("/api/FetchTag")
       const resultData = await response.json()
-      setCategories(resultData.data)
+      setTag(resultData.data)
     }
-    fetchCategories()
+    fetchTag()
   }, [])
 
   return (
     <div>
-      {
+      {tags.length ?
 
-        <AdminProdcutActionPage handleAddProduct={handleAddProduct} categories={categories} />
+        <AdminProdcutActionPage handleAddProduct={handleAddProduct} tags={tags} />
+        : Loading()
       }
     </div>
   )

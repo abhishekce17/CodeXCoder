@@ -22,6 +22,18 @@ export default function RootLayout({children}) {
   const [buyingProduct, setBuyingProduct] = useState([]);
   const [paymentInfo, setPaymentInfo] = useState({});
 
+  const fetchUserData = async () => {
+    const infoResponse = await fetch("/api/UserInformation/usersInfo")
+    const infoResult = await infoResponse.json()
+    if (infoResult.status === 200) {
+      setUserData(infoResult.userData);
+      console.log(infoResult.userData);
+      setIsLoading(false)
+    } else if (infoResult.status === 401) {
+      setIsLoading(false)
+    }
+  }
+
   useEffect(() => {
     const validateUserSession = async () => {
       const sessionResponse = await fetch("/api/Authentication/ValidateSession")
@@ -41,6 +53,7 @@ export default function RootLayout({children}) {
       <UserAuthContext.Provider value={{
         isUserLoggedIn,
         setIsUserLoggedIn,
+        userData
       }}>
         <body className={inter.className}>
           <Navbar />

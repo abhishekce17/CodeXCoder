@@ -1,7 +1,7 @@
 import filterStyle from "@/Styles/filter.module.css"
 
 
-const FilterComponent = ({categoryInfo, setFilterByBrand, category, setFilterByTags}) => {
+const FilterComponent = ({setFilterByTags, allFilterTags}) => {
   const filter = (brand, tags) => {
     if (brand !== undefined) {
       setFilterByBrand(prev => {
@@ -27,11 +27,11 @@ const FilterComponent = ({categoryInfo, setFilterByBrand, category, setFilterByT
       <div className={filterStyle.tags} >
         <p>Tags</p>
         {
-          categoryInfo?.filterTags.map((tag, index) => {
+          allFilterTags.map((tag, index) => {
             return (
               <div key={"tag" + index} className={filterStyle.eachTag} >
-                <input onChange={() => {filter(undefined, tag)}} id={"tag" + index} type="checkbox" key={`brand-${index}`} value={tag} />
-                <label htmlFor={"tag" + index} > {tag}</label>
+                <input onChange={() => {filter(undefined, tag.filterTag)}} id={"tag" + index} type="checkbox" key={`brand-${index}`} value={tag.filterTag} />
+                <label htmlFor={"tag" + index} > {tag.filterTag}</label>
               </div>
             )
           })

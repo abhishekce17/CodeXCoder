@@ -5,7 +5,7 @@ import {RxCross1} from 'react-icons/rx';
 import {CiImageOn} from 'react-icons/ci';
 import Image from 'next/image';
 
-const AdminProdcutActionPage = ({FetchedProductDetails, editMode, handleUpdateProduct, handleAddProduct, handleDeleteProduct, revenueDetails, categories}) => {
+const AdminProdcutActionPage = ({FetchedProductDetails, editMode, handleUpdateProduct, handleAddProduct, handleDeleteProduct, revenueDetails, tags}) => {
     const [productName, setProductName] = useState(FetchedProductDetails?.productName || '');
     const [price, setPrice] = useState(FetchedProductDetails?.price || '');
     const [discount, setDiscount] = useState(FetchedProductDetails?.discount || "");
@@ -20,8 +20,8 @@ const AdminProdcutActionPage = ({FetchedProductDetails, editMode, handleUpdatePr
     const [variantPrice, setVariantPrice] = useState(FetchedProductDetails?.variantPrice || {})
     const [formData, setFormData] = useState([])
     const [tagList, setTagList] = useState(FetchedProductDetails?.allTags || []);
-    const [filterTags, setFilterTags] = useState([]);
-    // const [defaultVariants, setDefaultVariants] = useState(categories.filter(element => element.category === category).defaultVariants)
+    const [filterTags, setFilterTags] = useState(tags);
+    // const [defaultVariants, setDefaultVariants] = useState(tags.filter(element => element.category === category).defaultVariants)
 
     const handleProductNameChange = (event) => {
         setProductName(event.target.value);
@@ -116,7 +116,7 @@ const AdminProdcutActionPage = ({FetchedProductDetails, editMode, handleUpdatePr
             allTags: tagList,
             averageRating: FetchedProductDetails?.averageRating || 0
         }))
-        // formDataAPI.append("categoryId", categories.filter(element => element.category === category)[0].categoryId)
+        // formDataAPI.append("categoryId", tags.filter(element => element.category === category)[0].categoryId)
         // if (typeof editMode === "undefined" && typeof handleUpdateProduct === "undefined" && typeof handleAddProduct === "function") {
         handleAddProduct(formDataAPI)
         // }
@@ -244,8 +244,8 @@ const AdminProdcutActionPage = ({FetchedProductDetails, editMode, handleUpdatePr
                         <div>
                             {filterTags.map((tag, index) => (
                                 <div key={"tag" + index} className={styles.eachTag} >
-                                    <input disabled={editMode} checked={tagList.some(x => x === tag)} onChange={handleTags} id={"tag" + index} type="checkbox" key={`brand-${index}`} value={tag} />
-                                    <label htmlFor={"tag" + index} >{tag}</label>
+                                    <input disabled={editMode} checked={tagList.some(x => x === tag.filterTag)} onChange={handleTags} id={"tag" + index} type="checkbox" key={`brand-${index}`} value={tag.filterTag} />
+                                    <label htmlFor={"tag" + index} >{tag.filterTag}</label>
                                 </div>
                             ))}
                         </div>

@@ -1,0 +1,99 @@
+.account_container {
+  color: var(--dark-bg-color);
+  padding: 50px 200px;
+  margin-top: 50px;
+  width: 100%;
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 50px;
+}
+
+.sidebar {
+  position: fixed;
+}
+.sidebar_container {
+  width: 180px;
+}
+.sidebar_container ul li {
+  font-size: 0.9rem;
+  list-style: none;
+  width: 180px;
+  /* border: 1px solid black; */
+}
+
+.sidebar_container ul li a {
+  padding: 10px 12px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar_container ul li a[data-choosed="true"],
+.sidebar_container ul li a[data-default="true"] {
+  background-color: var(--light-bg-color);
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.sidebar_container ul li + li {
+  margin-top: 10px;
+}
+
+.account_page_features {
+  border-radius: 8px;
+  border: 1px solid var(--light-bg-color);
+  font-size: 1rem;
+  background-color: #fff;
+  padding: 10px 20px;
+  /* height: max-content; */
+}
+
+.user_account {
+  line-height: 1.8;
+  padding: 10px 20px;
+}
+.user_info h3,
+.recent_order h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.user_info p {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: max-content;
+}
+.user_info p + p {
+  border-top: 1px solid var(--light-bg-color);
+}
+.user_info p strong {
+  font-weight: 500;
+}
+
+.recent_order table {
+  width: 100%;
+  border: 1px solid var(--light-bg-color);
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.recent_order th,
+.recent_order td {
+  padding: 8px;
+  border: 1px solid var(--light-bg-color);
+  text-align: left;
+}
+
+.recent_order th {
+  background-color: #f2f2f2;
+}
+
+.recent_order tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.signOut:active {
+  background-color: var(--dark-bg-color);
+  color: #fff !important;
+}

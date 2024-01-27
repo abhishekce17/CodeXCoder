@@ -14,25 +14,15 @@ const Page = ({params}) => {
     const ctgry = decodeURIComponent(params.ctgry)
     const [medicineProducts, setMedicineProducts] = useState([])
     const [isLoading, setIsLoading] = useState(true);
-    const [categoryInfo, setCategoryInfo] = useState([])
-    const context = useContext(UserAuthContext)
-    const [filterByBrand, setFilterByBrand] = useState([]);
+    const [allFilterTags, setAllFilterTags] = useState([]);
     const [filterByTags, setFilterByTags] = useState([]);
 
 
     const fetchFeaturedProducts = useMemo(async () => {
-        const response = await fetch(`/api/all-products`);
+        const response = await fetch("/api/all-products");
         const result = await response.json();
         if (result.status === 200) {
-            setCategoryInfo(result.categoryInfo);
-            if (filterByBrand.length) {
-                const brandNamesSet = new Set(filterByBrand);
-                const filteredProducts = result.data.filter(product =>
-                    brandNamesSet.has(product.brandName)
-                );
-                setMedicineProducts(filteredProducts);
-            }
-            else if (filterByTags.length) {
+            if (filterByTags.length) {
                 const TagNamesSet = new Set(filterByTags);
                 const filteredProducts = result.data.filter(product =>
                     product.allTags?.some(tag => TagNamesSet.has(tag))
@@ -47,9 +37,15 @@ const Page = ({params}) => {
             alert("Something went wrong please try again later");
             setIsLoading(false)
         }
-    }, [ctgry, filterByBrand, filterByTags]);
+    }, [ctgry, filterByTags]);
 
     useEffect(() => {
+        async function fetchtags() {
+            const response = await fetch("/api/FetchTag")
+            const resultData = await response.json()
+            setAllFilterTags(resultData.data)
+        }
+        fetchtags()
     }, [fetchFeaturedProducts]);
 
     return (
@@ -57,12 +53,12 @@ const Page = ({params}) => {
             {
                 isLoading ? Loading() :
                     <div className={styles.layout_container} data-listing="true" >
-                        <FilterComponent setFilterByTags={setFilterByTags} category={ctgry} categoryInfo={categoryInfo[0]} setFilterByBrand={setFilterByBrand} />
+                        <FilterComponent setFilterByTags={setFilterByTags} allFilterTags={allFilterTags} />
                         <div>
                             {medicineProducts.map((value, index) => {
                                 return (
                                     <div key={index} className={styles.each_product_card} >
-                                        <Link href={{pathname: `/medicine/${value.productId}`, query: {...extractMinimumNetValue(value.variants)?.obj || ""}}}  >
+                                        <Link href={{pathname: `/medicine/${value.productId}`}} >
                                             <Image width={500} height={500} src={value.productFirtsImgURL} alt={value.productFirtsImgURL} />
                                             <div>
                                                 <p>{value.productName}</p>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "../Styles/Navbar.module.css"
 import {useRouter} from "next/navigation";
 import UserAuthContext from "@/app/contextProvider";
+import {RiAccountCircleLine} from "react-icons/ri";
 
 const Navbar = () => {
   let router = useRouter()
